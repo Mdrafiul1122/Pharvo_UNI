@@ -1,0 +1,7 @@
+{
+  "layer": "query_normalization",
+  "purpose": "Normalize common Bangla/Banglish pharmacy query expressions before SVM classification.",
+  "reported_model_metrics_affected": false,
+  "classifier": "TF-IDF + LinearSVC",
+  "pharmacist_review_required": true
+}

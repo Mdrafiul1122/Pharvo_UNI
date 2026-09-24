@@ -1,0 +1,18 @@
+{
+  "classifier": "TF-IDF + LinearSVC",
+  "number_of_classes": 36,
+  "model_selection_metric": "Validation F1",
+  "validation_f1": 0.9049156177156176,
+  "test_accuracy": 0.8924302788844621,
+  "test_f1": 0.8926648937605114,
+  "probability_confidence": false,
+  "medicine_normalization": [
+    "alias_dictionary",
+    "fuzzy_matching"
+  ],
+  "medicine_source": "controlled_knowledge_base",
+  "requires_pharmacist_review": true,
+  "query_normalization": true,
+  "automatic_prescription": false,
+  "clinical_note": "Classifier output is a health-problem category, not a diagnosis or automatic prescription."
+}
