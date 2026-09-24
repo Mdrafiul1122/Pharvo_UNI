@@ -1,0 +1,37 @@
+﻿problem_id,health_problem,candidate_generics
+HP01,Fungal Skin Infection,Clotrimazole; Miconazole; Terbinafine
+HP02,Abdominal Pain,Paracetamol*
+HP03,Gastric Problem / Acidity,Antacid; Omeprazole
+HP04,Nausea & Vomiting,Oral Rehydration Salts (ORS); cause-specific antiemetic
+HP05,Abdominal Bloating / Gas,Simethicone
+HP06,Minor Cuts & Wounds,Chlorhexidine; Povidone-Iodine; Chloroxylenol
+HP07,Common Cold,Chlorpheniramine; Paracetamol
+HP08,Productive Cough,Guaifenesin; Bromhexine
+HP09,Dry Cough,Dextromethorphan
+HP10,Runny Nose,Chlorpheniramine; Cetirizine
+HP11,Fever,Paracetamol
+HP12,Dehydration / Fluid Loss,ORS
+HP13,Worm Infestation,Albendazole; Mebendazole
+HP14,Allergy,Chlorpheniramine; Cetirizine; Loratadine
+HP15,Headache,Paracetamol
+HP16,Toothache,Paracetamol
+HP17,Mouth Ulcer,Chlorhexidine mouthwash; topical oral preparations
+HP18,Constipation,Milk of Magnesia; Glycerin suppository
+HP19,Diarrhea,ORS; Zinc for appropriate pediatric diarrhea
+HP20,Heartburn / Acid Reflux,Antacid; Omeprazole
+HP21,Motion Sickness,Dimenhydrinate
+HP22,Muscle Pain,Diclofenac gel; Methyl Salicylate
+HP23,Minor Sprain,Diclofenac gel; Methyl Salicylate
+HP24,Dry Skin,Petrolatum; Urea-containing moisturizer
+HP25,Mild Dermatitis,Emollient
+HP26,Insect Bites,Calamine; Chlorpheniramine; topical antiseptic if needed
+HP27,Mild Eye Irritation,Lubricating/artificial tears
+HP28,Minor Burns,Chlorhexidine; suitable wound-care products
+HP29,Earwax / Ear Discomfort,Carbamide peroxide ear drops
+HP30,Athlete's Foot,Clotrimazole; Miconazole; Terbinafine
+HP31,Dandruff,Ketoconazole; Selenium Sulfide; Zinc Pyrithione
+HP32,Minor Acne,Benzoyl Peroxide; Adapalene
+HP33,Menstrual Cramps,Paracetamol; NSAIDs where appropriate
+HP34,Hemorrhoid Symptoms,Local/topical hemorrhoid preparations; stool-softening measures
+HP35,Smoking Cessation Support,Nicotine Replacement Therapy (NRT)
+HP36,Vitamin / Nutritional Supplement Needs,Multivitamins; Calcium; Ferrous salts; Ascorbic Acid
