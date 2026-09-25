@@ -191,6 +191,28 @@ class CheckoutView(APIView):
         serializer = CheckoutSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data
+        sensitive_products = [item['product'] for item in data['items'] if item['product'].is_sensitive]
+        customer = data.get('customer')
+        permission_granted = bool(customer and customer.sleeping_medicine_permission)
+        if sensitive_products and not permission_granted and not data.get('approve_sensitive'):
+            from notifications.services import create_notification
+            product_ids = '-'.join(str(product.pk) for product in sensitive_products)
+            customer_label = customer.name if customer else 'Walk-in customer'
+            create_notification(
+                notification_type='general',
+                title='Sensitive medicine approval required',
+                message=f'{customer_label}: review {", ".join(product.name for product in sensitive_products)} before dispensing.',
+                severity='warning',
+                product=sensitive_products[0],
+                dedup_key=f'sensitive-approval:{customer.pk if customer else "walk-in"}:{product_ids}',
+            )
+            return Response({
+                'requires_sensitive_approval': True,
+                'sensitive_items': [
+                    {'id': product.pk, 'name': product.name, 'generic_name': product.generic_name}
+                    for product in sensitive_products
+                ],
+            })
         try:
             sale = _create_sale(request.user, data)
         except ValidationError as exc:

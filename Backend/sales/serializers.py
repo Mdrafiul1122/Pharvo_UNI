@@ -11,13 +11,27 @@ User = get_user_model()
 class ProductBriefSerializer(serializers.ModelSerializer):
     class Meta:
         model = InventoryProduct
-        fields = ['id', 'name', 'brand', 'barcode', 'unit_price', 'stock_quantity']
+        fields = ['id', 'name', 'brand', 'unit_price', 'stock_quantity']
 
 
 class CustomerSerializer(serializers.ModelSerializer):
+    latest_health = serializers.SerializerMethodField()
+
     class Meta:
         model = Customer
-        fields = ['id', 'name', 'phone', 'email', 'membership_tier', 'loyalty_points']
+        fields = ['id', 'name', 'phone', 'email', 'membership_tier', 'loyalty_points', 'latest_health']
+
+    def get_latest_health(self, obj):
+        record = obj.health_checks.first()
+        if not record:
+            return None
+        return {
+            'blood_pressure': record.blood_pressure,
+            'diabetes': record.diabetes,
+            'diabetes_type': record.diabetes_type,
+            'recorded_date': record.recorded_date,
+            'health_notes': record.health_notes,
+        }
 
 
 class PosUserSerializer(serializers.ModelSerializer):
@@ -116,6 +130,8 @@ class CheckoutSerializer(serializers.Serializer):
     items = CheckoutItemSerializer(many=True)
     discount = serializers.DecimalField(max_digits=12, decimal_places=2, required=False, min_value=0)
     payments = CheckoutPaymentSerializer(many=True)
+    approve_sensitive = serializers.BooleanField(required=False, default=False)
+    approve_interactions = serializers.BooleanField(required=False, default=False)
 
     def validate(self, attrs):
         if not attrs.get('items'):
