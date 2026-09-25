@@ -1,0 +1,336 @@
+/* PHARVO customer portal design tokens — "Premium Clinical White" (v3).
+ * Light, premium, clinical-but-warm. Portal-scoped: every variable and
+ * class is prefixed (portal- / cp-) so the staff app is never affected.
+ *
+ * Gradients are reserved for: primary CTA, membership pass ring,
+ * progress bars, tier badge, brand mark. Everything else is flat.
+ * Motion: 200-300ms ease-out; counters ~900ms; all disabled under
+ * prefers-reduced-motion. */
+
+.portal-root,
+:root {
+  --portal-bg: #f6f8fb;
+  --portal-surface: #ffffff;
+  --portal-surface-2: #f9fafc;
+  --portal-ink: #0a0f1c;
+  --portal-ink-muted: #556072;
+  --portal-ink-subtle: #8a93a4;
+  --portal-line: #e6eaf0;
+  --portal-line-strong: #d5dbe5;
+  --portal-accent: #0ea5a4;
+  --portal-accent-2: #6366f1;
+  --portal-accent-soft: #e6fbf9;
+  --portal-accent-2-soft: #eef0fe;
+  --portal-success: #16a34a;
+  --portal-success-soft: #ecfdf5;
+  --portal-warning: #d97706;
+  --portal-warning-soft: #fef3c7;
+  --portal-danger: #dc2626;
+  --portal-danger-soft: #fee2e2;
+  --portal-grad: linear-gradient(135deg, #0ea5a4 0%, #6366f1 100%);
+  --portal-grad-ai: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #0ea5a4 100%);
+  --portal-shadow-card: 0 1px 2px rgb(10 15 28 / 0.05), 0 2px 6px rgb(10 15 28 / 0.04);
+  --portal-shadow-hover: 0 2px 4px rgb(10 15 28 / 0.04), 0 8px 20px rgb(10 15 28 / 0.06);
+  --portal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-root {
+  background: var(--portal-bg);
+  color: var(--portal-ink);
+  font-size: 14px;
+}
+
+/* anchor sections: offset for sticky top/bottom bars */
+.portal-section {
+  scroll-margin-top: 80px;
+}
+
+/* hide scrollbars on horizontal snap strips (mobile) */
+.portal-no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.portal-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- drawer / modal ---------- */
+.portal-drawer-overlay {
+  animation: portal-fade 200ms ease-out both;
+}
+
+.portal-drawer-panel {
+  animation: portal-slide-in 250ms var(--portal-ease) both;
+}
+
+@keyframes portal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes portal-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .portal-drawer-panel {
+    animation-name: portal-slide-up;
+  }
+}
+
+@keyframes portal-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- base card ---------- */
+.portal-card {
+  background: var(--portal-surface);
+  border: 1px solid var(--portal-line);
+  border-radius: 20px;
+  box-shadow: var(--portal-shadow-card);
+}
+
+.portal-card-hover {
+  transition: transform 200ms ease-out, box-shadow 250ms ease-out, border-color 200ms ease-out;
+}
+
+.portal-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--portal-shadow-hover);
+  border-color: var(--portal-line-strong);
+}
+
+/* ---------- gradient accents (restricted use) ---------- */
+.portal-grad-bg {
+  background: var(--portal-grad);
+}
+
+.portal-gradient-text {
+  background: var(--portal-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 1.5px gradient outer ring for the membership pass (AI-premium feel) */
+.portal-ring-wrap {
+  background: var(--portal-grad-ai);
+  border-radius: 22px;
+  padding: 1.5px;
+  box-shadow: var(--portal-shadow-card);
+}
+
+.portal-ring-inner {
+  background: var(--portal-surface);
+  border-radius: 20px;
+}
+
+/* gradient ring for avatars */
+.portal-avatar-ring {
+  background: var(--portal-grad);
+  border-radius: 999px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.portal-avatar-ring > * {
+  border-radius: 999px;
+}
+
+/* ---------- progress ---------- */
+.portal-progress-track {
+  background: var(--portal-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.portal-progress-fill {
+  background: var(--portal-grad);
+  border-radius: 999px;
+  transition: width 600ms var(--portal-ease);
+}
+
+/* ---------- pills ---------- */
+.portal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.portal-pill-accent { background: var(--portal-accent-soft); color: var(--portal-accent); }
+.portal-pill-accent-2 { background: var(--portal-accent-2-soft); color: var(--portal-accent-2); }
+.portal-pill-success { background: var(--portal-success-soft); color: var(--portal-success); }
+.portal-pill-warning { background: var(--portal-warning-soft); color: #b45309; }
+.portal-pill-danger { background: var(--portal-danger-soft); color: var(--portal-danger); }
+.portal-pill-neutral { background: var(--portal-surface-2); color: var(--portal-ink-muted); border: 1px solid var(--portal-line); }
+
+/* ---------- buttons ---------- */
+.portal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+  transition: transform 200ms ease-out, box-shadow 250ms ease-out, background 200ms ease-out, border-color 200ms ease-out;
+  border: 1px solid transparent;
+}
+
+.portal-btn:active {
+  transform: translateY(0);
+}
+
+.portal-btn-gradient {
+  background: var(--portal-grad);
+  color: #fff;
+}
+
+.portal-btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--portal-shadow-hover);
+}
+
+.portal-btn-ghost {
+  background: var(--portal-surface);
+  border-color: var(--portal-line);
+  color: var(--portal-ink);
+}
+
+.portal-btn-ghost:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--portal-shadow-hover);
+  border-color: var(--portal-line-strong);
+}
+
+.portal-btn-danger {
+  background: var(--portal-danger-soft);
+  color: var(--portal-danger);
+}
+
+.portal-btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--portal-shadow-hover);
+}
+
+.portal-btn-sm { padding: 8px 14px; font-size: 13px; min-height: 40px; }
+.portal-btn-md { padding: 10px 16px; font-size: 14px; }
+.portal-btn-lg { padding: 12px 20px; font-size: 14px; width: 100%; }
+
+/* ---------- icon squares ---------- */
+.portal-icon-square {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.portal-icon-accent { background: var(--portal-accent-soft); color: var(--portal-accent); }
+.portal-icon-accent-2 { background: var(--portal-accent-2-soft); color: var(--portal-accent-2); }
+.portal-icon-success { background: var(--portal-success-soft); color: var(--portal-success); }
+
+/* ---------- focus / motion ---------- */
+.portal-focus:focus-visible {
+  outline: 2px solid var(--portal-accent);
+  outline-offset: 2px;
+}
+
+/* glass bottom tab bar */
+.portal-glass {
+  background: rgb(255 255 255 / 0.78);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* ---------- legacy cp-* compat (kept, restyled to new tokens) ---------- */
+.cp-surface {
+  background: var(--portal-surface);
+  border: 1px solid var(--portal-line);
+  box-shadow: var(--portal-shadow-card);
+}
+
+.cp-tab-enter {
+  animation: cp-rise 220ms var(--portal-ease) both;
+}
+
+@keyframes cp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cp-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--portal-surface-2);
+  border: 1px solid var(--portal-line);
+}
+
+.cp-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--portal-line-strong), transparent);
+  opacity: 0.7;
+  transform: translateX(-100%);
+  animation: cp-shimmer 1.4s var(--portal-ease) infinite;
+}
+
+@keyframes cp-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-drawer-overlay,
+  .portal-drawer-panel {
+    animation: none;
+  }
+  .cp-tab-enter {
+    animation: none;
+  }
+  .cp-skeleton::after {
+    animation: none;
+    transform: none;
+  }
+  .portal-progress-fill {
+    transition: none;
+  }
+  .portal-card-hover:hover,
+  .portal-btn-gradient:hover,
+  .portal-btn-ghost:hover,
+  .portal-btn-danger:hover {
+    transform: none;
+  }
+}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import StaffApp from "./components/StaffApp";
-import CustomerPortal from "./Dashboard/CustomerPortal";
+import CustomerPortal from "./customer-portal/CustomerPortal";
 import { clearStoredTokens, fetchMe, getAccessToken, ROLES } from "./services/auth";
 
 const KNOWN_ROLES = [ROLES.ADMIN, ROLES.PHARMACIST, ROLES.CUSTOMER];
