@@ -12,6 +12,7 @@ import OrdersPage from "../orders/OrdersPage";
 import ReportsPage from "../reports/ReportsPage";
 import NotificationsPage from "../notifications/NotificationsPage";
 import SettingsPage from "../settings/SettingsPage";
+import PharmacyChatbot from "./PharmacyChatbot";
 
 const PAGE_META = {
   dashboard: { title: "Dashboard", subtitle: "Overview of your pharmacy operations today" },
@@ -89,6 +90,7 @@ export default function StaffApp() {
       {activeModule === "reports" && <ReportsPage />}
       {activeModule === "notifications" && <NotificationsPage onChanged={loadUnread} />}
       {activeModule === "settings" && <SettingsPage user={user || {}} onLogout={handleLogout} />}
+      <PharmacyChatbot />
     </AppShell>
   );
 }
