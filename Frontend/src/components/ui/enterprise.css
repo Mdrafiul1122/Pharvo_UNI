@@ -1,0 +1,279 @@
+/* PHARVO EnterpriseKit styles — "Pharvo Enterprise AI".
+ * All colors come from src/theme/tokens.css (--pharvo-*).
+ * Motion: out-expo easing; transform/opacity/background/box-shadow only. */
+
+.ent-scope { font-variant-numeric: tabular-nums; }
+
+/* ---------- 1. EntCard ---------- */
+.ent-card {
+  background: var(--pharvo-surface);
+  border: 1px solid var(--pharvo-line);
+  border-radius: 16px;
+  box-shadow: var(--pharvo-shadow-sm);
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ent-card-inset { background: var(--pharvo-surface-2); }
+.ent-card-elevated { box-shadow: var(--pharvo-shadow-md); }
+.ent-card-hover:hover { box-shadow: var(--pharvo-shadow-md); transform: translateY(-1px); }
+.ent-card-ai {
+  box-shadow: var(--pharvo-shadow-ai);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--pharvo-surface), var(--pharvo-surface)) padding-box,
+    var(--pharvo-grad-ai) border-box;
+}
+.ent-card-ai.ent-card-hover:hover { box-shadow: var(--pharvo-shadow-ai), var(--pharvo-shadow-md); transform: translateY(-1px); }
+
+/* ---------- 2. EntStatCard ---------- */
+.ent-stat { padding: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ent-stat-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ent-stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pharvo-ink-subtle); }
+.ent-stat-icon { width: 28px; height: 28px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1); }
+.ent-card-hover:hover .ent-stat-icon { transform: scale(1.08); }
+.ent-stat-value { font-size: 28px; font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; color: var(--pharvo-ink); font-variant-numeric: tabular-nums; }
+.ent-stat-foot { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.ent-stat-caption { font-size: 12px; color: var(--pharvo-ink-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ent-trend { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ent-trend-up { background: var(--pharvo-success-soft); color: var(--pharvo-success); }
+.ent-trend-down { background: var(--pharvo-danger-soft); color: var(--pharvo-danger); }
+.ent-spark { display: block; margin-top: 2px; opacity: 0.9; }
+
+/* ---------- 3. EntButton ---------- */
+.ent-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid transparent;
+  border-radius: 8px; white-space: nowrap;
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), background 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out, opacity 120ms ease-out;
+}
+.ent-btn:active { transform: scale(0.98); }
+.ent-btn:disabled { cursor: not-allowed; opacity: 0.5; transform: none; }
+.ent-btn-xs { min-height: 28px; padding: 4px 10px; font-size: 12px; }
+.ent-btn-sm { min-height: 32px; padding: 6px 12px; font-size: 12px; }
+.ent-btn-md { min-height: 36px; padding: 8px 14px; font-size: 13px; }
+.ent-btn-lg { min-height: 44px; padding: 12px 20px; font-size: 14px; border-radius: 10px; }
+.ent-btn-primary { background: var(--pharvo-grad); color: #fff; box-shadow: var(--pharvo-shadow-sm); }
+.ent-btn-primary:hover:not(:disabled) { box-shadow: var(--pharvo-shadow-md); transform: translateY(-1px); }
+.ent-btn-secondary { background: var(--pharvo-surface); border-color: var(--pharvo-line); color: var(--pharvo-ink); }
+.ent-btn-secondary:hover:not(:disabled) { border-color: var(--pharvo-line-strong); background: var(--pharvo-surface-2); }
+.ent-btn-ghost { background: transparent; color: var(--pharvo-ink); }
+.ent-btn-ghost:hover:not(:disabled) { background: var(--pharvo-surface-2); }
+.ent-btn-danger { background: var(--pharvo-danger-soft); color: var(--pharvo-danger); }
+.ent-btn-danger:hover:not(:disabled) { border-color: var(--pharvo-line-strong); }
+.ent-btn-ai { background: var(--pharvo-grad-ai); color: #fff; box-shadow: var(--pharvo-shadow-ai); }
+.ent-btn-ai:hover:not(:disabled) { box-shadow: var(--pharvo-shadow-ai), var(--pharvo-shadow-md); transform: translateY(-1px); }
+.ent-btn-block { width: 100%; }
+
+/* ---------- 4/5. EntInput / EntSelect ---------- */
+.ent-input, .ent-select {
+  background: var(--pharvo-surface); border: 1px solid var(--pharvo-line); border-radius: 8px;
+  color: var(--pharvo-ink); outline: none; min-height: 36px; font-size: 13px;
+  transition: border-color 120ms ease-out, box-shadow 120ms ease-out, background 120ms ease-out;
+}
+.ent-input::placeholder { color: var(--pharvo-ink-faint); }
+.ent-input:focus, .ent-select:focus { border-color: var(--pharvo-line-focus); box-shadow: 0 0 0 3px var(--pharvo-accent-soft); }
+.ent-input-wrap { display: inline-flex; align-items: center; gap: 8px; }
+.ent-input-wrap .ent-input { flex: 1; min-width: 0; }
+.ent-input-lead { color: var(--pharvo-ink-subtle); display: inline-flex; flex-shrink: 0; }
+.ent-input-trail { color: var(--pharvo-ink-subtle); font-size: 12px; font-weight: 600; flex-shrink: 0; }
+
+/* ---------- 6/7. EntPill / EntBadge ---------- */
+.ent-pill {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px;
+  border-radius: 6px; font-size: 11px; font-weight: 600; line-height: 1.4; white-space: nowrap;
+  border: 1px solid transparent;
+}
+.ent-pill-neutral { background: var(--pharvo-surface-3); color: var(--pharvo-ink-muted); border-color: var(--pharvo-line); }
+.ent-pill-accent { background: var(--pharvo-accent-soft); color: var(--pharvo-accent); border-color: rgb(14 165 164 / 0.3); }
+.ent-pill-accent-2 { background: var(--pharvo-accent-2-soft); color: var(--pharvo-accent-2); border-color: rgb(99 102 241 / 0.3); }
+.ent-pill-ai { background: var(--pharvo-accent-3-soft); color: var(--pharvo-accent-3); border-color: rgb(139 92 246 / 0.3); }
+.ent-pill-success { background: var(--pharvo-success-soft); color: var(--pharvo-success); border-color: rgb(22 163 74 / 0.3); }
+.ent-pill-warning { background: var(--pharvo-warning-soft); color: var(--pharvo-warning); border-color: rgb(217 119 6 / 0.3); }
+.ent-pill-danger { background: var(--pharvo-danger-soft); color: var(--pharvo-danger); border-color: rgb(220 38 38 / 0.3); }
+.ent-pill-info { background: var(--pharvo-info-soft); color: var(--pharvo-info); border-color: rgb(2 132 199 / 0.3); }
+.ent-badge {
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px;
+  border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  white-space: nowrap; border: 1px solid transparent;
+}
+
+/* ---------- 8. EntTable ---------- */
+.ent-table { width: 100%; border-collapse: collapse; text-align: left; }
+.ent-thead th {
+  background: var(--pharvo-surface-2); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--pharvo-ink-subtle); font-weight: 600; height: 36px; padding: 0 16px; white-space: nowrap;
+  border-bottom: 1px solid var(--pharvo-line);
+}
+.ent-thead-sticky { position: sticky; top: 0; z-index: 5; }
+.ent-row { transition: background 120ms ease-out; }
+.ent-row:hover { background: var(--pharvo-surface-2); }
+.ent-tbody > .ent-row { border-top: 1px solid var(--pharvo-line); }
+.ent-tbody > .ent-row:first-child { border-top: none; }
+.ent-td { padding: 12px 16px; font-size: 13px; line-height: 1.35; color: var(--pharvo-ink); min-height: 44px; }
+.ent-td-num { text-align: right; font-variant-numeric: tabular-nums; }
+.ent-row:focus-visible { outline: 2px inset var(--pharvo-accent); outline-offset: -2px; }
+.ent-row-lead { width: 24px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+/* ---------- 9. EntTabs ---------- */
+.ent-tabs { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border-radius: 10px; background: var(--pharvo-surface-2); border: 1px solid var(--pharvo-line); }
+.ent-tab {
+  min-height: 28px; padding: 4px 12px; border-radius: 8px; font-size: 12px; font-weight: 600;
+  color: var(--pharvo-ink-muted); cursor: pointer; background: transparent; border: none;
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  transition: background 120ms ease-out, color 120ms ease-out, box-shadow 120ms ease-out;
+}
+.ent-tab:hover { color: var(--pharvo-ink); }
+.ent-tab[aria-selected="true"], .ent-tab[aria-pressed="true"] { background: var(--pharvo-surface); box-shadow: var(--pharvo-shadow-xs); color: var(--pharvo-ink); }
+.ent-tab-count { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 999px; background: var(--pharvo-surface-3); color: var(--pharvo-ink-muted); font-variant-numeric: tabular-nums; }
+
+/* ---------- 10/11. EntModal / EntDrawer ---------- */
+.ent-modal-backdrop {
+  position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center;
+  padding: 16px; background: rgba(5, 8, 15, 0.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  animation: ent-fade 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ent-modal-panel {
+  background: var(--pharvo-surface); border-radius: 20px; box-shadow: var(--pharvo-shadow-xl);
+  border: 1px solid var(--pharvo-line); width: 100%; max-height: 90vh;
+  display: flex; flex-direction: column; overflow: hidden;
+  animation: ent-pop 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ent-modal-head { padding: 20px 20px 16px; border-bottom: 1px solid var(--pharvo-line); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ent-modal-title { font-size: 18px; font-weight: 700; color: var(--pharvo-ink); letter-spacing: -0.01em; }
+.ent-modal-body { padding: 20px; overflow-y: auto; }
+.ent-modal-foot { padding: 16px 20px; border-top: 1px solid var(--pharvo-line); display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.ent-modal-close, .ent-drawer-close {
+  width: 32px; height: 32px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+  color: var(--pharvo-ink-subtle); background: transparent; border: none; cursor: pointer; flex-shrink: 0;
+  transition: background 120ms ease-out, color 120ms ease-out;
+}
+.ent-modal-close:hover, .ent-drawer-close:hover { background: var(--pharvo-surface-2); color: var(--pharvo-ink); }
+@keyframes ent-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ent-pop { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+
+.ent-drawer-backdrop {
+  position: fixed; inset: 0; z-index: 50; background: rgba(5, 8, 15, 0.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  animation: ent-fade 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ent-drawer-panel {
+  position: absolute; top: 0; bottom: 0; right: 0; width: 100%; max-width: 420px;
+  background: var(--pharvo-surface); border-radius: 20px 0 0 20px; box-shadow: var(--pharvo-shadow-xl);
+  display: flex; flex-direction: column; overflow: hidden;
+  animation: ent-slide-right 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes ent-slide-right { from { opacity: 0; transform: translateX(32px); } to { opacity: 1; transform: translateX(0); } }
+
+/* ---------- 12. EntEmptyState ---------- */
+.ent-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px 24px; gap: 4px; }
+.ent-empty-icon { width: 48px; height: 48px; border-radius: 999px; background: var(--pharvo-surface-2); border: 1px solid var(--pharvo-line); display: inline-flex; align-items: center; justify-content: center; color: var(--pharvo-ink-subtle); margin-bottom: 8px; }
+.ent-empty-title { font-size: 15px; font-weight: 600; color: var(--pharvo-ink); }
+.ent-empty-desc { font-size: 13px; color: var(--pharvo-ink-muted); line-height: 1.5; max-width: 380px; }
+.ent-empty-cta { margin-top: 12px; }
+
+/* ---------- 13. EntSkeleton ---------- */
+.ent-skeleton { position: relative; overflow: hidden; background: var(--pharvo-surface-2); border-radius: 6px; }
+.ent-skeleton::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, var(--pharvo-line-strong), transparent);
+  opacity: 0.8; transform: translateX(-100%);
+  animation: ent-shimmer 1.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes ent-shimmer { to { transform: translateX(100%); } }
+
+/* ---------- 14. EntToast ---------- */
+.ent-toast-stack { position: fixed; right: 16px; bottom: 16px; z-index: 80; display: flex; flex-direction: column; gap: 8px; width: 360px; max-width: calc(100vw - 32px); }
+.ent-toast {
+  background: var(--pharvo-surface); border: 1px solid var(--pharvo-line); border-radius: 12px;
+  box-shadow: var(--pharvo-shadow-lg); padding: 12px 14px 12px 12px; display: flex; gap: 10px; align-items: flex-start;
+  animation: ent-toast-in 240ms cubic-bezier(0.16, 1, 0.3, 1) both; position: relative; overflow: hidden;
+}
+.ent-toast::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+.ent-toast-success::before { background: var(--pharvo-success); }
+.ent-toast-warning::before { background: var(--pharvo-warning); }
+.ent-toast-danger::before { background: var(--pharvo-danger); }
+.ent-toast-info::before, .ent-toast-ai::before { background: var(--pharvo-accent-2); }
+@keyframes ent-toast-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ---------- 15. EntAIBadge ---------- */
+.ent-ai-badge {
+  display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; white-space: nowrap;
+  background: rgb(139 92 246 / 0.12); color: var(--pharvo-accent-3);
+  border: 1px solid rgb(139 92 246 / 0.3);
+}
+
+/* ---------- 16. EntAIPanel ---------- */
+.ent-ai-panel {
+  border-radius: 16px; box-shadow: var(--pharvo-shadow-ai); border: 1px solid transparent;
+  background: linear-gradient(var(--pharvo-surface), var(--pharvo-surface)) padding-box, var(--pharvo-grad-ai) border-box;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.ent-ai-icon { width: 32px; height: 32px; border-radius: 10px; background: var(--pharvo-grad-ai); color: #fff; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ent-ai-thinking { position: relative; overflow: hidden; }
+.ent-ai-thinking::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgb(139 92 246 / 0.12), transparent);
+  transform: translateX(-100%); animation: ent-shimmer 1.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* ---------- 17. EntCommandPalette ---------- */
+.ent-cmdk-trigger {
+  display: inline-flex; align-items: center; gap: 8px; height: 36px; width: 320px; max-width: 40vw;
+  padding: 0 8px 0 12px; border-radius: 8px; background: var(--pharvo-surface-2);
+  border: 1px solid var(--pharvo-line); color: var(--pharvo-ink-subtle); font-size: 13px; cursor: pointer;
+  transition: border-color 120ms ease-out, box-shadow 120ms ease-out;
+}
+.ent-cmdk-trigger:hover { border-color: var(--pharvo-line-strong); }
+.ent-cmdk-trigger:focus-visible { outline: none; border-color: var(--pharvo-line-focus); box-shadow: 0 0 0 3px var(--pharvo-accent-soft); }
+.ent-cmdk-backdrop {
+  position: fixed; inset: 0; z-index: 70; display: flex; align-items: flex-start; justify-content: center;
+  padding: 12vh 16px 16px; background: rgba(5, 8, 15, 0.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  animation: ent-fade 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ent-cmdk-panel {
+  width: 640px; max-width: 100%; background: var(--pharvo-surface); border-radius: 12px;
+  border: 1px solid var(--pharvo-line); box-shadow: var(--pharvo-shadow-xl); overflow: hidden;
+  animation: ent-pop 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.ent-cmdk-group-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pharvo-ink-subtle); padding: 12px 16px 4px; }
+
+/* ---------- 18. EntKbd ---------- */
+.ent-kbd {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 6px;
+  border-radius: 4px; background: var(--pharvo-surface-2); border: 1px solid var(--pharvo-line);
+  font-size: 11px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--pharvo-ink-muted); white-space: nowrap;
+}
+
+/* ---------- focus ---------- */
+.ent-btn:focus-visible, .ent-tab:focus-visible, .ent-modal-close:focus-visible,
+.ent-drawer-close:focus-visible, .ent-row:focus-visible, .ent-cmdk-trigger:focus-visible {
+  outline: none; border-color: var(--pharvo-line-focus); box-shadow: 0 0 0 3px var(--pharvo-accent-soft);
+}
+
+/* ---------- shell helpers ---------- */
+.ent-shell-navitem {
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 36px; padding: 6px 12px;
+  border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--pharvo-ink);
+  cursor: pointer; background: transparent; border: none; position: relative; text-align: left;
+  transition: background 120ms ease-out, color 120ms ease-out;
+}
+.ent-shell-navitem:hover { background: rgb(249 250 252 / 0.6); }
+html[data-theme="dark"] .ent-shell-navitem:hover { background: rgb(255 255 255 / 0.04); }
+.ent-shell-navitem[aria-current="page"] { background: var(--pharvo-surface-2); font-weight: 600; }
+.ent-shell-navitem[aria-current="page"]::before {
+  content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 999px; background: var(--pharvo-accent);
+}
+.ent-shell-section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pharvo-ink-subtle); padding: 0 12px; margin-top: 6px; }
+
+@media (max-width: 767.98px) {
+  .ent-drawer-panel { top: 64px; bottom: 0; left: 0; right: 0; width: 100%; max-width: none; border-radius: 20px 20px 0 0; }
+  .ent-cmdk-trigger { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ent-card, .ent-card-hover:hover, .ent-btn, .ent-stat-icon, .ent-modal-panel, .ent-drawer-panel, .ent-toast { animation: none; transition: none; transform: none; }
+  .ent-skeleton::after, .ent-ai-thinking::after { animation: none; transform: none; }
+}

@@ -1,0 +1,109 @@
+/* PHARVO OS token system — "Pharvo Monochrome + Signal" (canonical source).
+ * Near-monochrome enterprise base with ONE signal accent (electric blue)
+ * and a dedicated AI violet. Loaded AFTER src/theme/tokens.css so it wins
+ * the cascade; every --pharvo-* name is preserved so all existing modules
+ * keep working with the new identity. No backend/logic impact.
+ *
+ * Typography: Inter (already loaded). Mono: ui-monospace stack.
+ * Motion: Linear-grade cubic-bezier(0.32, 0.72, 0, 1). */
+
+:root {
+  /* Base — neutral, cold, clinical */
+  --pharvo-bg: #fafafb;
+  --pharvo-bg-elevated: #ffffff;
+  --pharvo-surface: #ffffff;
+  --pharvo-surface-2: #f4f5f7;
+  --pharvo-surface-3: #ebedf1;
+  --pharvo-surface-inset: #e4e7ec;
+  /* Ink — near-black, not blue-black */
+  --pharvo-ink: #17181a;
+  --pharvo-ink-strong: #0a0a0b;
+  --pharvo-ink-muted: #5a5e66;
+  --pharvo-ink-subtle: #8b9099;
+  --pharvo-ink-faint: #c4c8ce;
+  /* Lines — hairlines */
+  --pharvo-line: #e8eaee;
+  --pharvo-line-strong: #d4d8de;
+  --pharvo-line-focus: #0057ff;
+  /* Signal — ONE accent only */
+  --pharvo-accent: #0057ff;
+  --pharvo-accent-hover: #0047d1;
+  --pharvo-accent-soft: #ebf1ff;
+  --pharvo-signal: #0057ff;
+  --pharvo-signal-soft: #ebf1ff;
+  --pharvo-signal-hover: #0047d1;
+  /* Legacy secondary slot now carries AI violet (single-hue rule) */
+  --pharvo-accent-2: #7c5cff;
+  --pharvo-accent-2-soft: #f1edff;
+  --pharvo-accent-3: #7c5cff;
+  --pharvo-accent-3-soft: #f1edff;
+  --pharvo-ai: #7c5cff;
+  --pharvo-ai-soft: #f1edff;
+  --pharvo-ai-grad: linear-gradient(135deg, #7c5cff 0%, #0057ff 100%);
+  --pharvo-grad-ai: linear-gradient(135deg, #7c5cff 0%, #0057ff 100%);
+  /* Semantic — muted, professional */
+  --pharvo-success: #067647;
+  --pharvo-success-soft: #ecfdf3;
+  --pharvo-warning: #b54708;
+  --pharvo-warning-soft: #fffaeb;
+  --pharvo-danger: #b42318;
+  --pharvo-danger-soft: #fef3f2;
+  --pharvo-info: #175cd3;
+  --pharvo-info-soft: #eff8ff;
+  /* Gradients */
+  --pharvo-grad: linear-gradient(135deg, #0057ff 0%, #0047d1 100%);
+  --pharvo-grad-surface: linear-gradient(180deg, #ffffff 0%, #f4f5f7 100%);
+  /* Depth */
+  --pharvo-shadow-xs: 0 1px 2px rgba(10, 10, 11, 0.04);
+  --pharvo-shadow-card: 0 1px 3px rgba(10, 10, 11, 0.06), 0 1px 2px rgba(10, 10, 11, 0.04);
+  --pharvo-shadow-sm: 0 1px 3px rgba(10, 10, 11, 0.06), 0 1px 2px rgba(10, 10, 11, 0.04);
+  --pharvo-shadow-md: 0 4px 8px -2px rgba(10, 10, 11, 0.08), 0 2px 4px -2px rgba(10, 10, 11, 0.04);
+  --pharvo-shadow-hover: 0 4px 8px -2px rgba(10, 10, 11, 0.08), 0 2px 4px -2px rgba(10, 10, 11, 0.04);
+  --pharvo-shadow-lg: 0 12px 24px -4px rgba(10, 10, 11, 0.1), 0 4px 8px -4px rgba(10, 10, 11, 0.06);
+  --pharvo-shadow-xl: 0 24px 48px -8px rgba(10, 10, 11, 0.14), 0 8px 16px -8px rgba(10, 10, 11, 0.08);
+  --pharvo-shadow-signal: 0 0 0 1px rgba(0, 87, 255, 0.1), 0 8px 32px rgba(0, 87, 255, 0.14);
+  --pharvo-shadow-ai: 0 0 0 1px rgba(124, 92, 255, 0.1), 0 8px 32px rgba(124, 92, 255, 0.16);
+  /* Radii */
+  --pharvo-radius-badge: 4px;
+  --pharvo-radius-sm: 6px;
+  --pharvo-radius-btn: 8px;
+  --pharvo-radius-panel: 12px;
+  --pharvo-radius-card: 12px;
+  --pharvo-radius-modal: 20px;
+  /* Motion — Linear-grade */
+  --pharvo-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --pharvo-dur-micro: 80ms;
+  --pharvo-dur-standard: 140ms;
+  --pharvo-dur-layout: 200ms;
+  --pharvo-dur-page: 320ms;
+  --pharvo-dur-dramatic: 480ms;
+  /* Type */
+  --pharvo-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --pharvo-mono: ui-monospace, "Geist Mono", "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html[data-theme="dark"] {
+  --pharvo-bg: #0a0a0b;
+  --pharvo-bg-elevated: #131316;
+  --pharvo-surface: #131316;
+  --pharvo-surface-2: #1a1a1e;
+  --pharvo-surface-3: #232328;
+  --pharvo-surface-inset: #1a1a1e;
+  --pharvo-ink: #f4f4f5;
+  --pharvo-ink-strong: #ffffff;
+  --pharvo-ink-muted: #a1a1aa;
+  --pharvo-ink-subtle: #71717a;
+  --pharvo-ink-faint: #52525b;
+  --pharvo-line: #26262b;
+  --pharvo-line-strong: #35353c;
+  --pharvo-accent-soft: rgb(0 87 255 / 0.16);
+  --pharvo-signal-soft: rgb(0 87 255 / 0.16);
+  --pharvo-accent-2-soft: rgb(124 92 255 / 0.16);
+  --pharvo-accent-3-soft: rgb(124 92 255 / 0.16);
+  --pharvo-ai-soft: rgb(124 92 255 / 0.16);
+  --pharvo-success-soft: rgb(6 118 71 / 0.14);
+  --pharvo-warning-soft: rgb(181 71 8 / 0.14);
+  --pharvo-danger-soft: rgb(180 35 24 / 0.14);
+  --pharvo-info-soft: rgb(23 92 211 / 0.16);
+  --pharvo-grad-surface: linear-gradient(180deg, #131316 0%, #1a1a1e 100%);
+}
