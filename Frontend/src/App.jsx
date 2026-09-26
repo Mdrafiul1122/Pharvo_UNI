@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
-import StaffApp from "./components/StaffApp";
+import StaffApp from "./Pharmacist Portal/UI/StaffApp";
 import CustomerPortal from "./customer-portal/CustomerPortal";
 import { clearStoredTokens, fetchMe, getAccessToken, ROLES } from "./services/auth";
 
@@ -24,7 +24,7 @@ const spinnerStyle = {
   height: "34px",
   borderRadius: "50%",
   border: "3px solid #e5e4e7",
-  borderTopColor: "#2563eb",
+  borderTopColor: "#0EA5A4",
   animation: "pharvo-spin 0.8s linear infinite",
 };
 

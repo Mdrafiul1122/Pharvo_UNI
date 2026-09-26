@@ -1,0 +1,454 @@
+/* PHARVO POS + Transaction History theme layer — "Premium Clinical White".
+ * Reuses the EXACT shared tokens from src/theme/tokens.css (--pharvo-*),
+ * already loaded by the staff app shell. No POS-only palette is defined
+ * here: every color below aliases a --pharvo-* token (fallbacks repeat the
+ * canonical values so the POS still renders if tokens.css ever unloads).
+ *
+ * Density: POS body 13-14px, card padding 16px, section gap 12px.
+ * Radius: cards 16px, buttons 10px, pills 999px, inputs 10px.
+ * Motion: 150-200ms ease-out (snappier than dashboards). */
+
+.pos-scope {
+  --pos-bg: var(--pharvo-bg, #f7f9fc);
+  --pos-surface: var(--pharvo-surface, #ffffff);
+  --pos-surface-2: var(--pharvo-surface-2, #fbfcfe);
+  --pos-ink: var(--pharvo-ink, #0b1220);
+  --pos-ink-muted: var(--pharvo-ink-muted, #64748b);
+  --pos-ink-subtle: var(--pharvo-ink-subtle, #94a3b8);
+  --pos-line: var(--pharvo-line, #eef1f5);
+  --pos-line-strong: var(--pharvo-line-strong, #e2e8f0);
+  --pos-accent: var(--pharvo-accent, #0ea5a4);
+  --pos-accent-2: var(--pharvo-accent-2, #6366f1);
+  --pos-accent-soft: var(--pharvo-accent-soft, #e6fbf9);
+  --pos-accent-2-soft: var(--pharvo-accent-2-soft, #eef0fe);
+  --pos-success: var(--pharvo-success, #22c55e);
+  --pos-success-soft: var(--pharvo-success-soft, #ecfdf5);
+  --pos-warning: var(--pharvo-warning, #f59e0b);
+  --pos-warning-soft: var(--pharvo-warning-soft, #fffbeb);
+  --pos-danger: var(--pharvo-danger, #f43f5e);
+  --pos-danger-soft: var(--pharvo-danger-soft, #fff1f3);
+  --pos-grad: var(--pharvo-grad, linear-gradient(135deg, #0ea5a4 0%, #6366f1 100%));
+  --pos-shadow-card: var(--pharvo-shadow-card, 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06));
+  --pos-shadow-hover: var(--pharvo-shadow-hover, 0 1px 2px rgba(16, 24, 40, 0.05), 0 16px 40px rgba(16, 24, 40, 0.08));
+  --pos-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  background: var(--pos-bg);
+  color: var(--pos-ink);
+  font-size: 13.5px;
+}
+
+/* ---------- base card (16px radius, POS density) ---------- */
+.pos-card {
+  background: var(--pos-surface);
+  border: 1px solid var(--pos-line);
+  border-radius: 16px;
+  box-shadow: var(--pos-shadow-card);
+}
+
+.pos-card-pad { padding: 16px; }
+
+.pos-card-hover { transition: transform 150ms ease-out, box-shadow 200ms ease-out, border-color 150ms ease-out; }
+.pos-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pos-shadow-hover);
+  border-color: var(--pos-line-strong);
+}
+
+/* ---------- buttons (10px radius) ---------- */
+.pos-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 150ms ease-out, box-shadow 200ms ease-out, background 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+  white-space: nowrap;
+}
+.pos-btn:disabled { cursor: not-allowed; }
+
+.pos-btn-gradient { background: var(--pos-grad); color: #fff; }
+.pos-btn-gradient:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--pos-shadow-hover); }
+.pos-btn-gradient:disabled { background: var(--pos-line-strong); color: var(--pos-ink-subtle); box-shadow: none; transform: none; }
+
+.pos-btn-ghost { background: var(--pos-surface); border-color: var(--pos-line); color: var(--pos-ink); }
+.pos-btn-ghost:hover:not(:disabled) { border-color: var(--pos-line-strong); background: var(--pos-surface-2); }
+.pos-btn-ghost:disabled { opacity: 0.5; }
+
+.pos-btn-danger-ghost { background: var(--pos-danger-soft); border-color: transparent; color: var(--pos-danger); }
+.pos-btn-danger-ghost:hover:not(:disabled) { border-color: var(--pos-line-strong); }
+.pos-btn-danger-ghost:disabled { opacity: 0.5; }
+
+.pos-btn-sm { min-height: 32px; padding: 6px 12px; font-size: 12px; }
+.pos-btn-md { min-height: 36px; padding: 8px 14px; font-size: 13px; }
+.pos-btn-lg { min-height: 48px; padding: 12px 20px; font-size: 14px; font-weight: 700; }
+.pos-btn-block { width: 100%; }
+
+/* ---------- pills (999px) ---------- */
+.pos-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.pos-pill-accent { background: var(--pos-accent-soft); color: var(--pos-accent); }
+.pos-pill-accent-2 { background: var(--pos-accent-2-soft); color: var(--pos-accent-2); }
+.pos-pill-success { background: var(--pos-success-soft); color: var(--pos-success); }
+.pos-pill-warning { background: var(--pos-warning-soft); color: #b45309; }
+.pos-pill-danger { background: rgba(244, 63, 94, 0.12); color: var(--pos-danger); }
+.pos-pill-neutral { background: var(--pos-surface-2); color: var(--pos-ink-muted); border: 1px solid var(--pos-line); }
+
+/* ---------- segmented unit toggle (28px tall) ---------- */
+.pos-seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 10px;
+  border: 1px solid var(--pos-line);
+  background: var(--pos-surface-2);
+  min-height: 28px;
+}
+.pos-seg-btn {
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--pos-ink-muted);
+  cursor: pointer;
+  min-height: 22px;
+  transition: background 150ms ease-out, color 150ms ease-out;
+  white-space: nowrap;
+}
+.pos-seg-btn:hover:not(:disabled) { color: var(--pos-ink); }
+.pos-seg-btn[aria-pressed="true"] { background: var(--pos-accent-soft); color: var(--pos-accent); }
+.pos-seg-btn:disabled { color: var(--pos-ink-subtle); opacity: 0.55; cursor: not-allowed; }
+
+/* ---------- stepper (24px circle buttons) ---------- */
+.pos-stepper { display: inline-flex; align-items: center; gap: 6px; }
+.pos-stepper-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pos-surface-2);
+  border: 1px solid var(--pos-line);
+  color: var(--pos-ink-muted);
+  cursor: pointer;
+  transition: background 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+  flex-shrink: 0;
+}
+.pos-stepper-btn:hover { background: var(--pos-line-strong); color: var(--pos-ink); border-color: var(--pos-line-strong); }
+.pos-stepper-val { font-size: 13px; font-weight: 600; min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* ---------- stock dot ---------- */
+.pos-stock { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pos-dot { width: 7px; height: 7px; border-radius: 999px; flex-shrink: 0; }
+.pos-dot-ok { background: var(--pos-success); }
+.pos-dot-low { background: var(--pos-warning); }
+.pos-dot-out { background: var(--pos-danger); }
+.pos-stock-ok { color: var(--pos-ink-muted); }
+.pos-stock-low { color: #b45309; }
+.pos-stock-out { color: var(--pos-danger); }
+
+/* ---------- banners (10px radius) ---------- */
+.pos-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.pos-banner-amber { background: var(--pos-warning-soft); border-color: rgba(245, 158, 11, 0.3); color: var(--pos-ink); }
+.pos-banner-rose { background: var(--pos-danger-soft); border-color: rgba(244, 63, 94, 0.3); color: var(--pos-ink); }
+.pos-banner-info { background: var(--pos-accent-2-soft); border-color: rgba(99, 102, 241, 0.3); color: var(--pos-ink); }
+.pos-banner-success { background: var(--pos-success-soft); border-color: rgba(34, 197, 94, 0.3); color: var(--pos-ink); }
+
+/* ---------- tables ---------- */
+.pos-table { width: 100%; border-collapse: collapse; text-align: left; }
+.pos-thead th {
+  background: var(--pos-surface-2);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pos-ink-subtle);
+  font-weight: 700;
+  height: 36px;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+.pos-thead-sticky { position: sticky; top: 0; z-index: 5; }
+.pos-row { transition: background 150ms ease-out; }
+.pos-row:hover { background: var(--pos-surface-2); }
+.pos-row + .pos-row, .pos-tbody-divided > .pos-row { border-top: 1px solid var(--pos-line); }
+
+/* ---------- inputs / selects (10px radius, 2px accent focus) ---------- */
+.pos-input, .pos-select {
+  background: var(--pos-surface);
+  border: 1px solid var(--pos-line);
+  border-radius: 10px;
+  color: var(--pos-ink);
+  outline: none;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.pos-input:focus, .pos-select:focus {
+  border-color: var(--pos-accent);
+  box-shadow: 0 0 0 2px var(--pos-accent-soft);
+}
+.pos-input::placeholder { color: var(--pos-ink-subtle); }
+
+.pos-btn:focus-visible, .pos-seg-btn:focus-visible, .pos-stepper-btn:focus-visible,
+.pos-input:focus-visible, .pos-select:focus-visible {
+  outline: 2px solid var(--pos-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- icon squares ---------- */
+.pos-icon-square {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pos-icon-accent { background: var(--pos-accent-soft); color: var(--pos-accent); }
+.pos-icon-accent-2 { background: var(--pos-accent-2-soft); color: var(--pos-accent-2); }
+.pos-icon-success { background: var(--pos-success-soft); color: var(--pos-success); }
+.pos-icon-warning { background: var(--pos-warning-soft); color: #b45309; }
+.pos-icon-danger { background: var(--pos-danger-soft); color: var(--pos-danger); }
+.pos-icon-neutral { background: var(--pos-surface-2); color: var(--pos-ink-muted); border: 1px solid var(--pos-line); }
+
+/* ---------- modal shell ---------- */
+.pos-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(11, 18, 32, 0.45);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: pos-fade 180ms ease-out both;
+}
+.pos-modal-panel {
+  background: var(--pos-surface);
+  border-radius: 20px;
+  box-shadow: var(--pos-shadow-card);
+  border: 1px solid var(--pos-line);
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 24px;
+  animation: pos-pop 180ms ease-out both;
+}
+@keyframes pos-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pos-pop { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+
+.pos-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pos-ink-subtle);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 150ms ease-out, color 150ms ease-out;
+  flex-shrink: 0;
+}
+.pos-modal-close:hover { background: var(--pos-surface-2); color: var(--pos-ink); }
+
+.pos-section-box { background: var(--pos-surface-2); border: 1px solid var(--pos-line); border-radius: 12px; }
+
+/* ---------- price cells (PC / Strip / Box columns) ---------- */
+.pos-price-val { font-weight: 600; color: var(--pos-ink); font-variant-numeric: tabular-nums; }
+.pos-price-na {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--pos-surface-2);
+  border: 1px dashed var(--pos-line-strong);
+  color: var(--pos-ink-subtle);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+}
+.pos-price-na-inline { min-width: 22px; height: 18px; padding: 0 6px; font-size: 11px; }
+
+/* ---------- Unit & Add filled control box ---------- */
+.pos-unit-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 4px 4px 6px;
+  border-radius: 12px;
+  border: 1px solid var(--pos-line);
+  background: var(--pos-surface-2);
+}
+.pos-unit-add-card { padding: 4px; }
+.pos-unit-add .pos-seg { background: var(--pos-surface); }
+
+/* ---------- catalog footer (filled bottom bar) ---------- */
+.pos-catalog-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  border-top: 1px solid var(--pos-line);
+  background: var(--pos-surface-2);
+  font-size: 12px;
+  color: var(--pos-ink-muted);
+}
+.pos-catalog-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+.pos-catalog-count-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--pos-accent-soft);
+  color: var(--pos-accent);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.pos-catalog-legend { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pos-catalog-legend-item { display: inline-flex; align-items: center; gap: 5px; color: var(--pos-ink-subtle); font-weight: 600; font-size: 11px; }
+.pos-catalog-legend-sep { width: 1px; height: 14px; background: var(--pos-line-strong); }
+
+/* ---------- price chips (mobile catalog cards) ---------- */
+.pos-price-chip {
+  background: var(--pos-surface-2);
+  border: 1px solid var(--pos-line);
+  border-radius: 10px;
+  padding: 6px 8px;
+  font-size: 10px;
+  min-width: 0;
+  flex: 1;
+}
+.pos-price-chip-label { color: var(--pos-ink-subtle); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9px; }
+.pos-price-chip-val { color: var(--pos-ink); font-weight: 700; font-size: 12px; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.pos-price-chip-na { color: var(--pos-ink-subtle); font-weight: 600; }
+.pos-price-chip-empty { border-style: dashed; background: transparent; }
+
+/* ---------- gradient total underline ---------- */
+.pos-total-underline {
+  height: 2px;
+  border-radius: 999px;
+  background: var(--pos-grad);
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+/* ---------- skeleton shimmer (same feel as portal) ---------- */
+.pos-skeleton { position: relative; overflow: hidden; background: var(--pos-surface-2); border: 1px solid var(--pos-line); border-radius: 8px; }
+.pos-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--pos-line-strong), transparent);
+  opacity: 0.7;
+  transform: translateX(-100%);
+  animation: pos-shimmer 1.4s ease-out infinite;
+}
+@keyframes pos-shimmer { to { transform: translateX(100%); } }
+
+/* ---------- header / workspace layout (fixed-height POS workspace) ---------- */
+.pos-workspace-root {
+  min-height: calc(100vh - 64px);
+  background: var(--pos-bg);
+}
+.pos-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 56px;
+  background: transparent;
+}
+/* flex-1 grid; columns size to their content, leftover shows page bg */
+.pos-workspace-grid { flex: 1 1 auto; align-items: start; }
+/* catalog column + card wrap their content — no forced white stretch */
+.pos-catalog-col { min-height: 0; }
+.pos-catalog-card { min-height: 0; height: auto; }
+/* scroll caps only kick in for long lists; short lists show page bg below */
+.pos-catalog-scroll {
+  flex: none;
+  min-height: 0;
+  overflow-y: auto;
+  max-height: min(680px, calc(100vh - 240px));
+}
+.pos-catalog-scroll-mobile {
+  flex: none;
+  min-height: 0;
+  overflow-y: auto;
+  max-height: min(560px, calc(100vh - 280px));
+}
+.pos-catalog-foot {
+  margin-top: 0;
+  flex-shrink: 0;
+  background: var(--pos-surface-2);
+}
+/* right column: always fully populated, sticks while catalog scrolls */
+.pos-right-col {
+  position: sticky;
+  top: 72px;
+  align-self: start;
+  width: 100%;
+  max-height: calc(100vh - 88px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 4px;
+}
+
+@media (max-width: 1279.98px) {
+  .pos-right-col { position: static; max-height: none; overflow: visible; }
+  .pos-catalog-card { height: auto; }
+  .pos-catalog-scroll { max-height: 560px; }
+}
+
+@media (max-width: 767.98px) {
+  .pos-modal-backdrop { padding: 0; align-items: flex-end; }
+  .pos-modal-panel {
+    border-radius: 20px 20px 0 0;
+    max-height: 94vh;
+    padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pos-modal-backdrop, .pos-modal-panel { animation: none; }
+  .pos-skeleton::after { animation: none; transform: none; }
+  .pos-card-hover:hover, .pos-btn-gradient:hover:not(:disabled) { transform: none; }
+}

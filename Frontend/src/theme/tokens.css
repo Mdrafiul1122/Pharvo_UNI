@@ -1,0 +1,335 @@
+/* PHARVO shared theme — "Premium Clinical White" (canonical source).
+ * Same product family as the Customer Portal: identical token VALUES to
+ * src/customer-portal/tokens.css (which stays frozen and untouched).
+ * Portal uses --portal-* names; staff uses --pharvo-* names below so the
+ * two systems can never collide. One design system, two entry points.
+ *
+ * Gradients are reserved for: primary CTA, brand mark, progress bars,
+ * tier/membership accents. Everything else is flat.
+ * Motion: 200-300ms ease-out; disabled under prefers-reduced-motion. */
+
+/* PHARVO enterprise theme — "Pharvo Enterprise AI" (canonical source).
+ * Same product family as the Customer Portal: identical token VALUES to
+ * src/customer-portal/tokens.css (which stays frozen and untouched).
+ * Portal uses --portal-* names; staff uses --pharvo-* names below so the
+ * two systems can never collide. One design system, two entry points.
+ *
+ * Light theme is default. Optional dark theme via data-theme="dark" on <html>.
+ * Gradients are reserved for: primary CTA, brand mark, AI accents,
+ * progress bars, tier/membership accents. Everything else is flat.
+ * Motion: out-expo easing; disabled under prefers-reduced-motion. */
+
+:root {
+  /* Surfaces */
+  --pharvo-bg: #f6f8fb;
+  --pharvo-bg-elevated: #ffffff;
+  --pharvo-surface: #ffffff;
+  --pharvo-surface-2: #f9fafc;
+  --pharvo-surface-3: #f1f4f8;
+  --pharvo-surface-inset: #eef2f7;
+  /* Ink */
+  --pharvo-ink: #0a0f1c;
+  --pharvo-ink-strong: #05080f;
+  --pharvo-ink-muted: #556072;
+  --pharvo-ink-subtle: #8a93a4;
+  --pharvo-ink-faint: #b4bbc8;
+  /* Lines */
+  --pharvo-line: #e6eaf0;
+  --pharvo-line-strong: #d5dbe5;
+  --pharvo-line-focus: #0ea5a4;
+  /* Accents */
+  --pharvo-accent: #0ea5a4;
+  --pharvo-accent-hover: #0c8f8e;
+  --pharvo-accent-soft: #e6fbf9;
+  --pharvo-accent-2: #6366f1;
+  --pharvo-accent-2-soft: #eef0fe;
+  --pharvo-accent-3: #8b5cf6;
+  --pharvo-accent-3-soft: #f3eefe;
+  /* Semantic */
+  --pharvo-success: #16a34a;
+  --pharvo-success-soft: #ecfdf5;
+  --pharvo-warning: #d97706;
+  --pharvo-warning-soft: #fef3c7;
+  --pharvo-danger: #dc2626;
+  --pharvo-danger-soft: #fee2e2;
+  --pharvo-info: #0284c7;
+  --pharvo-info-soft: #e0f2fe;
+  /* Gradients */
+  --pharvo-grad: linear-gradient(135deg, #0ea5a4 0%, #6366f1 100%);
+  --pharvo-grad-ai: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #0ea5a4 100%);
+  --pharvo-grad-surface: linear-gradient(180deg, #ffffff 0%, #f9fafc 100%);
+  /* Shadows */
+  --pharvo-shadow-xs: 0 1px 2px rgb(10 15 28 / 0.04);
+  --pharvo-shadow-card: 0 1px 2px rgb(10 15 28 / 0.05), 0 2px 6px rgb(10 15 28 / 0.04);
+  --pharvo-shadow-sm: 0 1px 2px rgb(10 15 28 / 0.05), 0 2px 6px rgb(10 15 28 / 0.04);
+  --pharvo-shadow-md: 0 2px 4px rgb(10 15 28 / 0.04), 0 8px 20px rgb(10 15 28 / 0.06);
+  --pharvo-shadow-hover: 0 2px 4px rgb(10 15 28 / 0.04), 0 8px 20px rgb(10 15 28 / 0.06);
+  --pharvo-shadow-lg: 0 4px 8px rgb(10 15 28 / 0.05), 0 20px 48px rgb(10 15 28 / 0.1);
+  --pharvo-shadow-xl: 0 8px 16px rgb(10 15 28 / 0.06), 0 32px 64px rgb(10 15 28 / 0.14);
+  --pharvo-shadow-ai: 0 0 0 1px rgb(99 102 241 / 0.08), 0 8px 32px rgb(99 102 241 / 0.12);
+  /* Radii */
+  --pharvo-radius-badge: 6px;
+  --pharvo-radius-sm: 8px;
+  --pharvo-radius-btn: 10px;
+  --pharvo-radius-panel: 12px;
+  --pharvo-radius-card: 16px;
+  --pharvo-radius-modal: 20px;
+  /* Motion */
+  --pharvo-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --pharvo-dur-micro: 120ms;
+  --pharvo-dur-standard: 180ms;
+  --pharvo-dur-layout: 240ms;
+  --pharvo-dur-page: 320ms;
+}
+
+/* Optional dark theme — toggle via data-theme="dark" on <html>. */
+html[data-theme="dark"] {
+  --pharvo-bg: #07090f;
+  --pharvo-bg-elevated: #0e1420;
+  --pharvo-surface: #0e1420;
+  --pharvo-surface-2: #131a28;
+  --pharvo-surface-3: #1a2233;
+  --pharvo-surface-inset: #131a28;
+  --pharvo-ink: #f2f5fa;
+  --pharvo-ink-strong: #ffffff;
+  --pharvo-ink-muted: #a5aec0;
+  --pharvo-ink-subtle: #6e7889;
+  --pharvo-ink-faint: #4a5468;
+  --pharvo-line: #1e2838;
+  --pharvo-line-strong: #2a364a;
+  --pharvo-accent-soft: rgb(14 165 164 / 0.12);
+  --pharvo-accent-2-soft: rgb(99 102 241 / 0.14);
+  --pharvo-accent-3-soft: rgb(139 92 246 / 0.14);
+  --pharvo-success-soft: rgb(22 163 74 / 0.12);
+  --pharvo-warning-soft: rgb(217 119 6 / 0.14);
+  --pharvo-danger-soft: rgb(220 38 38 / 0.12);
+  --pharvo-info-soft: rgb(2 132 199 / 0.14);
+  --pharvo-grad-surface: linear-gradient(180deg, #0e1420 0%, #131a28 100%);
+}
+
+/* ---------- base card ---------- */
+.staff-card {
+  background: var(--pharvo-surface);
+  border: 1px solid var(--pharvo-line);
+  border-radius: 20px;
+  box-shadow: var(--pharvo-shadow-card);
+}
+
+.staff-card-hover {
+  transition: transform 200ms ease-out, box-shadow 250ms ease-out, border-color 200ms ease-out;
+}
+
+.staff-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pharvo-shadow-hover);
+  border-color: var(--pharvo-line-strong);
+}
+
+/* ---------- gradient accents (restricted use) ---------- */
+.staff-grad-bg {
+  background: var(--pharvo-grad);
+}
+
+.staff-gradient-text {
+  background: var(--pharvo-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- progress ---------- */
+.staff-progress-track {
+  background: var(--pharvo-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.staff-progress-fill {
+  background: var(--pharvo-grad);
+  border-radius: 999px;
+  transition: width 600ms var(--pharvo-ease);
+}
+
+/* ---------- pills ---------- */
+.staff-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.staff-pill-accent { background: var(--pharvo-accent-soft); color: var(--pharvo-accent); }
+.staff-pill-accent-2 { background: var(--pharvo-accent-2-soft); color: var(--pharvo-accent-2); }
+.staff-pill-success { background: var(--pharvo-success-soft); color: var(--pharvo-success); }
+.staff-pill-warning { background: var(--pharvo-warning-soft); color: #b45309; }
+.staff-pill-danger { background: var(--pharvo-danger-soft); color: var(--pharvo-danger); }
+.staff-pill-neutral { background: var(--pharvo-surface-2); color: var(--pharvo-ink-muted); border: 1px solid var(--pharvo-line); }
+
+/* ---------- buttons ---------- */
+.staff-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+  transition: transform 200ms ease-out, box-shadow 250ms ease-out, background 200ms ease-out, border-color 200ms ease-out;
+  border: 1px solid transparent;
+}
+
+.staff-btn-gradient {
+  background: var(--pharvo-grad);
+  color: #fff;
+}
+
+.staff-btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pharvo-shadow-hover);
+}
+
+.staff-btn-ghost {
+  background: var(--pharvo-surface);
+  border-color: var(--pharvo-line);
+  color: var(--pharvo-ink);
+}
+
+.staff-btn-ghost:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pharvo-shadow-hover);
+  border-color: var(--pharvo-line-strong);
+}
+
+.staff-btn-danger {
+  background: var(--pharvo-danger-soft);
+  color: var(--pharvo-danger);
+}
+
+.staff-btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pharvo-shadow-hover);
+}
+
+.staff-btn-sm { padding: 8px 14px; font-size: 13px; min-height: 40px; }
+.staff-btn-md { padding: 10px 16px; font-size: 14px; }
+.staff-btn-lg { padding: 12px 20px; font-size: 14px; }
+
+/* ---------- icon squares ---------- */
+.staff-icon-square {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.staff-icon-accent { background: var(--pharvo-accent-soft); color: var(--pharvo-accent); }
+.staff-icon-accent-2 { background: var(--pharvo-accent-2-soft); color: var(--pharvo-accent-2); }
+.staff-icon-success { background: var(--pharvo-success-soft); color: var(--pharvo-success); }
+.staff-icon-warning { background: var(--pharvo-warning-soft); color: #b45309; }
+.staff-icon-danger { background: var(--pharvo-danger-soft); color: var(--pharvo-danger); }
+.staff-icon-neutral { background: var(--pharvo-surface-2); color: var(--pharvo-ink-muted); border: 1px solid var(--pharvo-line); }
+
+/* ---------- segmented control ---------- */
+.staff-segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--pharvo-line);
+  background: var(--pharvo-surface);
+}
+
+.staff-segmented-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pharvo-ink-muted);
+  cursor: pointer;
+  min-height: 32px;
+  transition: background 200ms ease-out, color 200ms ease-out;
+  white-space: nowrap;
+}
+
+.staff-segmented-btn:hover {
+  color: var(--pharvo-ink);
+}
+
+.staff-segmented-btn[aria-pressed="true"] {
+  background: var(--pharvo-accent-soft);
+  color: var(--pharvo-accent);
+}
+
+/* ---------- banners ---------- */
+.staff-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.staff-banner-info { background: var(--pharvo-accent-2-soft); border-color: rgb(99 102 241 / 0.3); color: var(--pharvo-ink); }
+.staff-banner-warning { background: var(--pharvo-warning-soft); border-color: rgb(245 158 11 / 0.3); color: var(--pharvo-ink); }
+.staff-banner-danger { background: var(--pharvo-danger-soft); border-color: rgb(244 63 94 / 0.3); color: var(--pharvo-ink); }
+.staff-banner-success { background: var(--pharvo-success-soft); border-color: rgb(34 197 94 / 0.3); color: var(--pharvo-ink); }
+
+/* ---------- focus ---------- */
+.staff-focus:focus-visible {
+  outline: 2px solid var(--pharvo-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- mobile drawer ---------- */
+.staff-drawer-backdrop {
+  background: rgb(0 0 0 / 0.3);
+  animation: staff-fade 200ms ease-out both;
+}
+
+.staff-drawer-panel {
+  animation: staff-slide-in 300ms var(--pharvo-ease) both;
+}
+
+@keyframes staff-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes staff-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .staff-drawer-backdrop,
+  .staff-drawer-panel {
+    animation: none;
+  }
+  .staff-progress-fill {
+    transition: none;
+  }
+  .staff-card-hover:hover,
+  .staff-btn-gradient:hover,
+  .staff-btn-ghost:hover,
+  .staff-btn-danger:hover {
+    transform: none;
+  }
+}
